@@ -2,10 +2,8 @@ import React from 'react'
 import '../style/LoginForm.css'
 import Axios from 'axios'
 const random = (length = 6) => {
-    // Declare all characters
+  
     let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-    // Pick characers randomly
     let str = '';
     for (let i = 0; i < length; i++) {
         str += chars.charAt(Math.floor(Math.random() * chars.length));
@@ -47,7 +45,7 @@ const random = (length = 6) => {
     <div className="row">
         
         <div className="form_bg">
-            <form style={{marginTop:40}}>
+            <form >
                  <h2 style={{textAlign:'center', fontSize:'30px'}}>Login Page</h2>
 
                 <br/>
@@ -68,7 +66,7 @@ const random = (length = 6) => {
                 <br/>
                 <br/>
                 <div style={{marginLeft:'80%'}}>
-                    <button type="submit" className="btn btn-default" id="login" onClick={handlelogin} style={{fontSize:30}}>Login</button>
+                    <button type="submit"  id="login" onClick={handlelogin} style={{fontSize:30}}>Login</button>
                 </div>
             </form>
         </div>

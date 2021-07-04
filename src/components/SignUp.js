@@ -28,13 +28,13 @@ const SignUp=(props)=> {
     }
    return (
        <div style={{width:'100%',height:'100%',margin:'0 0 0 0',zIndex:11000,fontSize:40,position:'fixed'}}>
-       <div className="container">
-   <div className="row">
+       <div >
+   <div >
        
        <div className="form_bg">
        
        
-           <form style={{marginTop:40}}>
+           <form >
                 <h2 style={{textAlign:'center', fontSize:'30px'}}>SignUp Page</h2>
 
                <br/>
@@ -60,7 +60,7 @@ const SignUp=(props)=> {
                <br/>
                
                <div style={{marginLeft:'73%'}}>
-                   <button type="submit" className="btn btn-default" onClick={postData} style={{fontSize:30}}>Register</button>
+                   <button type="submit"  onClick={postData} style={{fontSize:30}}>Register</button>
                </div>
            </form>
        </div>

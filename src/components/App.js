@@ -9,6 +9,7 @@ import {Route,BrowserRouter as Router,Link,Switch, Redirect}from 'react-router-d
 import '../style/App.css'
 import Login from './Loginform.js'
 import Signup from './SignUp.js'
+import '../style/Videoitem.css'
 import Axios from 'axios';
 class App extends React.Component {
     state = {
@@ -22,7 +23,6 @@ class App extends React.Component {
     handlename=(name)=>{
         this.setState({isLoggedin:true,username:name})
     }
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////
     handleSubmit = async (termFromSearchBar) => {
         const response = await youtube.get('/search', {
             params: {
@@ -39,7 +39,6 @@ class App extends React.Component {
         })
         
     };
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     handleVideoSelect = (video) => {
         this.setState({selectedVideo: video})
@@ -91,7 +90,7 @@ class App extends React.Component {
     if(this.state.selectedVideo){
         return (
             <Router>
-        <div style={{top:0, minWidth:1250, ovverflow:'auto'}}>
+        <div style={{top:0, minWidth:1250}}>
         {this.state.isLoggedin===false ?<>
            <Switch>
         <Route path='/Login' exact render={props => (<Login {...props} handlename={this.handlename}/>)}/>
@@ -103,22 +102,25 @@ class App extends React.Component {
                 <Navbar  handlenav={this.handlenav} nav={this.state.selectedNav} log={this.state.isLoggedin} />
             </div>
             <div style={{display:'inline-block', margin:"0% 0 0 11%",width:"89%",borderLeftWidth:1,top:0}}>
-                <div className='ui container' style={{position:"fixed",zIndex:4, width:"100%", border:"hidden",backgroundColor:"white",top:0}}>
+                <div style={{position:"fixed",zIndex:4, width:"100%", border:"hidden",backgroundColor:"white",top:0}}>
                     <SearchBar  handleFormSubmit={this.handleSubmit}/>
                 </div>
+
                 {this.state.isLoggedin?<div style={{ zIndex:'20030',margin:"0px 0 0 70%", width:"30%",marginTop:0,position:'fixed',fontSize:'20PX'}}>{HELLO} {this.state.username}     <button className='button' onClick={this.handlesignout} style={{width:'20%'}}>signout</button></div>:
                                    <div style={{ zIndex:'20030',margin:"0px 0 0 80%",marginTop:0,position:'fixed',backgroundColor:'white', width:'8%'  }}><Link to='/Login'><button className='button'>Login</button></Link><Link to='/Signup'><button className='button'>SignUp</button></Link></div>}
                 <hr style={{width:"100%",color:'lightgrey',marginTop:"53px",position:"fixed",zIndex:8}}></hr>
-                <div className='ui grid' style={{marginTop:60}}>
-                    <div className="ui row">
-                        <div className="ten wide column">
+                
+                <div className='ui grid ' style={{marginTop:60}}>
+                    <div className="listv">
+                        <div className="ten wide column ">
                             <VideoDetail video={this.state.selectedVideo} List={this.state.videos} log={this.state.isLoggedin} user={this.state.username} selected={this.state.selectedNav}/>
                         </div>
-                        <div className="five wide column">
+                        <div className="ten wide column">
                             <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.videos}/>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
         </Router>
